@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { View, TextInput, TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-const Main = () => {
-  const navigation = useNavigation();
+
+const existente= () => {
   const [nombreTendero, setNombreTendero] = useState('');
   const [numeroCarnet, setNumeroCarnet] = useState('');
   const [fecha, setFecha] = useState('');
@@ -27,8 +26,8 @@ const Main = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Crea un cajero</Text>
-      <Text style={styles.title2}>Inserta los datos</Text>
+      <Text style={styles.title}>Cajero Existente</Text>
+      <Text style={styles.title2}>Modifica los datos O INGRESA CON LOS REGISTRADOS ANTERIORMENTE</Text>
       <TextInput
         style={styles.input}
         placeholder="Nombre tendero"
@@ -51,17 +50,8 @@ const Main = () => {
         style={styles.button}
         onPress={handleButtonPress}
       >
-        <Text style={styles.buttonText}>Crear cajero</Text>
-        
+        <Text style={styles.buttonText}>Ingresar</Text>
       </TouchableOpacity>
-      <br />
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('existente')} // Cambiar 'Existente' por el nombre correcto de tu pantalla existente
-      >
-        <Text style={styles.buttonText}>Cajero existente</Text>
-      </TouchableOpacity>
-
     </View>
   );
 };
@@ -103,4 +93,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Main;
+export default existente;

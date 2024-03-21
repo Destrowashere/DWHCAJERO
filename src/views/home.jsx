@@ -2,15 +2,23 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { RoundedButton } from "../components/button";
+import Main from "./main";
+import existente from "./existente";
+
 const HomeScreen = () => {
   const navigation = useNavigation();
 
   const navigateToCajeroRegister = () => {
-    navigation.navigate("Home");
+    navigation.navigate("Main"); // Mantiene la navegación para el primer botón
   };
+
+  const navigateToCajeroExistente = () => {
+    navigation.navigate("existente"); // Cambia la navegación para el tercer botón
+  };
+
   const navigateToVentaRegister = () => {
     navigation.navigate("VentaRegistro")  
-}
+  }
 
   return (
     <>
@@ -28,7 +36,7 @@ const HomeScreen = () => {
         />
         <RoundedButton
           text="Consultar Cajero"
-          onPress={navigateToCajeroRegister}
+          onPress={navigateToCajeroExistente} // Cambia la función para el tercer botón
         />
       </View>
     </>
