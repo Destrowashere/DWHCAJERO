@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, TextInput, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-const existente= () => {
+const Existente= () => {
   const [nombreTendero, setNombreTendero] = useState('');
   const [numeroCarnet, setNumeroCarnet] = useState('');
   const [fecha, setFecha] = useState('');
@@ -93,4 +93,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default existente;
+export default Existente;

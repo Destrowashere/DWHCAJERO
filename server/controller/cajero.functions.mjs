@@ -13,8 +13,8 @@ export default function getCajeros(req, res) {
 }
 
 export function RegistrarCjero(req,res){
-    const { name }  = req.body;
-    db.query('INSERT INTO cajero (nombre) VALUES (?)',[name],(error,results)=>{
+    const { name, carnet }  = req.body;
+    db.query('INSERT INTO cajero (nombre,carnet) VALUES (?,?)',[name, carnet],(error,results)=>{
         if (error) {
             console.error('Error al insertar cajero:', error);
             res.status(500).json({ error: 'Error interno del servidor' });
@@ -25,9 +25,9 @@ export function RegistrarCjero(req,res){
 }
 
 export function RegistrarVenta(req, res){
-    const { cliente, valor, fecha } = req.body;
+    const { cajero, cliente, valor, fecha } = req.body;
     const factura = Math.floor(10000 + Math.random() * 90000);
-    db.query('INSERT INTO ventas(cliente, valor, fecha, factura) VALUES (?,?,?,?)',[cliente, valor, fecha, factura],(error,results)=>{
+    db.query('INSERT INTO ventas(cajero,cliente, valor, fecha, factura) VALUES (?,?,?,?,?)',[cajero,cliente, valor, fecha, factura],(error,results)=>{
         if (error){
             console.log(`Error al registrar venta: ${error}`);
             res.status(500).json({error:error});

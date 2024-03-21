@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { View, TextInput, TouchableOpacity, Text, StyleSheet, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 const Main = () => {
   const navigation = useNavigation();
   const [nombreTendero, setNombreTendero] = useState('');
   const [numeroCarnet, setNumeroCarnet] = useState('');
-  const [fecha, setFecha] = useState('');
 
   const handleNombreTenderoChange = (text) => {
     setNombreTendero(text);
@@ -17,6 +16,30 @@ const Main = () => {
 
   const handleFechaChange = (text) => {
     setFecha(text);
+  };
+
+  const CrearCajero = async () => {
+    try {
+      const response = await fetch('http://192.168.20.47:3500/cajero', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: nombreTendero,
+          carnet: numeroCarnet,
+        }),
+      });
+
+      if (response.ok) {
+        Alert.alert('Cajero insertado');
+      } else {
+        throw new Error('Error al insertar cajero');
+      }
+    } catch (error) {
+      console.error('Error al insertar cajero:', error);
+      Alert.alert('Error', 'No se pudo insertar el cajero');
+    }
   };
 
   const handleButtonPress = () => {
@@ -41,23 +64,16 @@ const Main = () => {
         value={numeroCarnet}
         onChangeText={handleNumeroCarnetChange}
       />
-      <TextInput
-        style={styles.input}
-        placeholder="Fecha (EJ: 02/03/24)"
-        value={fecha}
-        onChangeText={handleFechaChange}
-      />
       <TouchableOpacity
         style={styles.button}
-        onPress={handleButtonPress}
+        onPress={CrearCajero}
       >
         <Text style={styles.buttonText}>Crear cajero</Text>
         
       </TouchableOpacity>
-      <br />
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('existente')} // Cambiar 'Existente' por el nombre correcto de tu pantalla existente
+        onPress={() => navigation.navigate('Existente')} // Cambiar 'Existente' por el nombre correcto de tu pantalla existente
       >
         <Text style={styles.buttonText}>Cajero existente</Text>
       </TouchableOpacity>
