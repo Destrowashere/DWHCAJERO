@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import Input from '../components/input';
-
 const RegistroVenta = () => {
   const [cliente, setCliente] = useState('');
   const [valorVenta, setValorVenta] = useState('');
   const [fechaVenta, setFechaVenta] = useState('');
+  const [fechaFormateada, setFechaFormateada] = useState('');
 
   const handleGuardarVenta = () => {
     console.log('Cliente:', cliente);
@@ -14,15 +14,14 @@ const RegistroVenta = () => {
   };
 
   const formatFecha = (input) => {
-    // Si la longitud del input es menor o igual a 8, formatear la fecha
     if (input.length <= 8) {
       const formattedDate = input
-        .replace(/\D/g, '') // Eliminar caracteres no numéricos
+        .replace(/\D/g, '')
         .replace(/^(\d{2})?(\d{2})?(\d{0,4})?$/, (match, p1, p2, p3) => {
-          // Agregar las barras entre el día, mes y año
           return [p1, p2, p3].filter(Boolean).join('/');
         });
       setFechaVenta(formattedDate);
+      setFechaFormateada(formattedDate); // Actualiza la fecha formateada en tiempo real
     }
   };
 
@@ -49,6 +48,7 @@ const RegistroVenta = () => {
         value={fechaVenta}
         onChangeText={formatFecha}
       />
+      <Text style={styles.fechaText}>{fechaFormateada}</Text>
       <TouchableOpacity style={styles.button} onPress={handleGuardarVenta}>
         <Text style={styles.buttonText}>Guardar Venta</Text>
       </TouchableOpacity>
@@ -74,6 +74,10 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontSize: 18,
+  },
+  fechaText: {
+    marginTop: 10,
+    fontSize: 16,
   },
 });
 
