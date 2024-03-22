@@ -40,7 +40,7 @@ const HomeScreen = () => {
         />
         <RoundedButton
           text="Consultar Cajero"
-          onPress={navigateToTableCajero} // Cambia la función para el tercer botón
+          onPress={navigateToTableCajero} 
         />
       </View>
     </>
