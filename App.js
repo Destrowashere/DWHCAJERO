@@ -7,6 +7,7 @@ import MainScreen from './src/views/main';
 import RegistroVentaScreen from './src/views/registroventa';
 import TableCajero from './src/views/cajerosconsultas';
 import Existente from './src/views/existente';
+import TableVentas from './src/views/ventaConsulta'
 
 const Stack = createNativeStackNavigator();
 
@@ -17,10 +18,10 @@ export default function App() {
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Main" component={MainScreen} />
-        <Stack.Screen name="existente" component={Existente} />
+        <Stack.Screen name="Existente" component={Existente} />
         <Stack.Screen name="VentaRegistro" component={RegistroVentaScreen} />
         <Stack.Screen name="Cajeros existentes" component={TableCajero} />
-
+        <Stack.Screen name="Consulta ventas" component={TableVentas} />
       </Stack.Navigator>
     </NavigationContainer>
   );

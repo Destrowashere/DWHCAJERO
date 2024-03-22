@@ -4,7 +4,6 @@ import { useNavigation } from "@react-navigation/native";
 import { RoundedButton } from "../components/button";
 import Main from "./main";
 import Existente from "./existente";
-
 const HomeScreen = () => {
   const navigation = useNavigation();
 
@@ -23,6 +22,9 @@ const HomeScreen = () => {
   const navigateToTableCajero = () => {
     navigation.navigate("Cajeros existentes")  
   }
+  const navigateToTableVenta = () => {
+    navigation.navigate("Consulta ventas")  
+  }
 
   return (
     <>
@@ -40,9 +42,14 @@ const HomeScreen = () => {
         />
         <RoundedButton
           text="Consultar Cajero"
-          onPress={navigateToTableCajero} // Cambia la función para el tercer botón
+          onPress={navigateToTableCajero} 
+        />
+         <RoundedButton
+          text="Consultar Ventas"
+          onPress={navigateToTableVenta} 
         />
       </View>
+
     </>
   );
 };

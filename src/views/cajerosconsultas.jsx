@@ -25,23 +25,28 @@ const TableCajero = () => {
   );
 
   return (
-    <FlatList
-      data={cajeros}
-      keyExtractor={item => item.id.toString()}
-      renderItem={renderCajeroItem}
-      ListHeaderComponent={() => (
-        <View style={[styles.row, styles.header]}>
-          <Text style={styles.cell}>ID</Text>
-          <Text style={styles.cell}>Nombre</Text>
-          <Text style={styles.cell}>Carnet</Text>
-          <Text style={styles.cell}>Fecha Registro</Text>
-        </View>
-      )}
-    />
+    <View style={styles.container}>
+      <FlatList
+        data={cajeros}
+        keyExtractor={item => item.id.toString()}
+        renderItem={renderCajeroItem}
+        ListHeaderComponent={() => (
+          <View style={[styles.row, styles.header]}>
+            <Text style={styles.cell}>ID</Text>
+            <Text style={styles.cell}>Nombre</Text>
+            <Text style={styles.cell}>Carnet</Text>
+            <Text style={styles.cell}>Fecha Registro</Text>
+          </View>
+        )}
+      />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    //flex: 1,
+  },
   row: {
     flexDirection: 'row',
     borderColor: '#000',

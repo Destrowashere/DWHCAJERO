@@ -116,13 +116,6 @@ const RegistroVenta = () => {
         value={valorVenta}
         onChangeText={setValorVenta}
       />
-      <Input
-        label="Fecha de venta"
-        placeholder="Ingresa la fecha de venta (DDMMYYYY)"
-        keyboardType="numeric"
-        value={fechaVenta}
-        onChangeText={(input) => {}}
-      />
       <Text style={styles.fechaText}>{fechaFormateada}</Text>
       <TouchableOpacity style={styles.button} onPress={handleGuardarVenta}>
         <Text style={styles.buttonText}>Guardar Venta</Text>
